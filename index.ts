@@ -1,7 +1,7 @@
 import bot from './bot.ts';
 import commands from './commands.ts';
 import config from './configs.ts';
-import { sendMessage, Message, ban, getGuild, sendDirectMessage, unban, createInvite, getMember } from "https://deno.land/x/discordeno@9.4.0/mod.ts";
+import { sendMessage, Message, ban, getGuild, sendDirectMessage, unban, createInvite } from "https://deno.land/x/discordeno@9.4.0/mod.ts";
 
 interface helpItem {
     command : string;
