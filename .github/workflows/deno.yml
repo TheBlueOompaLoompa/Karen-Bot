@@ -24,6 +24,8 @@ jobs:
           deno-version: v1.x
         env:
           KAREN_BOT_TOKEN: ${{ secrets.KAREN_BOT_TOKEN }}
+          TEST: ${{ secrets.TEST }}
       - run: |
+          echo "$TEST"
           deno --version
           deno test --allow-env --allow-net ./index.ts
