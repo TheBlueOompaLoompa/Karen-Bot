@@ -30,6 +30,10 @@ const help : helpItem[] = [
 */
 
 commands.registerCommand("ban", (msg: Message, args: string[]) => {
+
+	if(!bot.permCheck(msg, "BAN_MEMBERS"))
+		return false;
+
 	const userId = args[0].replace('<', '').replace('>', '').replace('@', '').replace('!', '');
 
 	getGuild(msg.guildID).then(guild => {
@@ -40,6 +44,10 @@ commands.registerCommand("ban", (msg: Message, args: string[]) => {
 });
 
 commands.registerCommand("unban", (msg: Message, args: string[]) => {
+
+	if(!bot.permCheck(msg, "BAN_MEMBERS"))
+		return false;
+
 	const userId = args[0].replace('<', '').replace('>', '').replace('@', '').replace('!', '');
 
 	getGuild(msg.guildID).then(guild => {
