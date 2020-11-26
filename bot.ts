@@ -1,4 +1,4 @@
-import StartBot, { cache, Intents, Message } from "https://deno.land/x/discordeno@9.4.0/mod.ts";
+import StartBot, { cache, calculatePermissions, Intents, Message, Permission } from "https://deno.land/x/discordeno@9.4.0/mod.ts";
 import config from './configs.ts';
 
 export default {
@@ -20,11 +20,14 @@ export default {
             },
         });
     },
-    permCheck: (msg : Message, perm : string) => {
+    permCheck: (msg : Message, perm : Permission) => {
         let hasPerm = false;
 
         msg.member?.roles.forEach(role => {
-            if(cache.guilds.get(msg.guildID)?.roles.get(role)?.permissions.includes(perm))
+            console.log(cache.guilds.get(msg.guildID)?.roles.get(role));
+            const permString = cache.guilds.get(msg.guildID)?.roles.get(role)?.permissions + '';
+            const calculatedPerms = calculatePermissions(BigInt(permString));
+            if(calculatedPerms.includes(perm))
                 hasPerm = true;
         });
 
