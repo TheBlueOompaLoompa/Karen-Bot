@@ -18,11 +18,11 @@ jobs:
   test:
     runs-on: ubuntu-16.04
     steps:
+      - name: Deno Bot test
       - uses: actions/checkout@v2
       - uses: denolib/setup-deno@v2
         with:
           deno-version: v1.x
-      - name: Deno Bot test
       - run: deno test --allow-env --allow-net ./index.ts
         env:
           KAREN_BOT_TOKEN: ${{ secrets.KAREN_BOT_TOKEN }}
